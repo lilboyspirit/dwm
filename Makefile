@@ -14,7 +14,7 @@ all: dwm
 ${OBJ}: config.h config.mk
 
 config.h:
-	cp config.def.h $@
+	cp -f config.def.h $@
 
 dwm: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
@@ -31,7 +31,6 @@ dist: clean
 	rm -rf dwm-${VERSION}
 
 install: all
-	rm -f config.h
 	mkdir -p ${DESTDIR}${PREFIX}/bin
 	cp -f dwm ${DESTDIR}${PREFIX}/bin
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
